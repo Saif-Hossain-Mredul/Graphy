@@ -46,7 +46,7 @@ def conv_list(list):
 
     try:
         for element in list:
-            new_list.append(int(element))
+            new_list.append(float(element))
 
         return new_list
 
@@ -74,7 +74,9 @@ def gs_radio_selct():
 
 # function for showing temporary figure
 def temp_graph(x, y, linestyle, graphstyle, title, x_name, y_name, line_name):
+    print(x, y)
     if graphstyle == 1:
+        print('1')
         plt.close()
 
         # changes the figure window icon
@@ -84,7 +86,7 @@ def temp_graph(x, y, linestyle, graphstyle, title, x_name, y_name, line_name):
 
         plt.style.use('seaborn')
         # plt.scatter(x, y)
-        plt.plot(x, y, 'o-', linestyle=linestyle, label=line_name)
+        plt.plot(x, y, 'o', linestyle=linestyle, label=line_name)
         plt.title(str(title))
         plt.xlabel(str(x_name))
         plt.ylabel(str(y_name))
@@ -147,7 +149,7 @@ def main_graph():
 
                 plt.Figure()
                 thismanager = plt.get_current_fig_manager()
-                thismanager.window.wm_iconbitmap("images\\ icon_1.ico")
+                # thismanager.window.wm_iconbitmap("images\\ icon_1.ico")
 
                 plt.style.use('seaborn')
                 plt.plot(x, y, 'o-', label=temp.label)
@@ -161,7 +163,7 @@ def main_graph():
                 # changes the figure window icon
                 plt.Figure()
                 thismanager = plt.get_current_fig_manager()
-                thismanager.window.wm_iconbitmap("images\\icon_1.ico")
+                # thismanager.window.wm_iconbitmap("images\\icon_1.ico")
 
                 plt.style.use('seaborn')
                 plt.scatter(x, y)
@@ -177,7 +179,7 @@ def main_graph():
                 # changes the figure window icon
                 plt.Figure()
                 thismanager = plt.get_current_fig_manager()
-                thismanager.window.wm_iconbitmap("images\\icon_1.ico")
+                # thismanager.window.wm_iconbitmap("images\\icon_1.ico")
 
                 plt.style.use('seaborn')
                 plt.scatter(x, y)
@@ -209,7 +211,7 @@ def graph_data():
     list_y = entry_y.get().split(",")
 
     # converting list to numpy array
-    x = np.array(sorted(conv_list(list_x)))
+    x = np.array((conv_list(list_x)))
     y = np.array(conv_list(list_y))
 
     # graph title
@@ -260,7 +262,7 @@ def graph_data():
 
     data_list = list(OrderedDict.fromkeys(data_list))
     checkVar.set(0)
-    print(data_list)
+    print('printing from graph_data',data_list)
 
 
 # """Main window start""" #
